@@ -183,6 +183,42 @@ void Jeu::dessineGrille(int compteurFichier) {
     fic.close();
 }
 
+
+void Jeu::renderGrille(sf::RenderWindow &window) {
+    int i,j;
+    int r,g,b = -1;
+    sf::Vector2u vect = window.getSize();
+    int X = max(int(vect.x/TAILLE), 1);
+    int Y = max(int(vect.y/TAILLE), 1);
+    sf::VertexArray pointmap(sf::Points, pop.NombreTotalAnimaux()*X*Y);
+    int indice =0;
+    for (i = 0; i < TAILLE; i++){
+        for (j = 0; j < TAILLE; j++){
+            int ID = grille.GetId(Coord(i,j));
+            if (ID == -1)
+                continue;
+            if (pop.getAnimal(ID).getType() == animaux::Renard){
+                r = 255; g = 0; b = 0;
+            }else if(pop.getAnimal(ID).getType() == animaux::Lapin){
+                r = 0; g = 255; b = 0;
+            }
+            if (b == 0){
+                for (int x = 0; x <X; x++){
+                    for (int y = 0; y <Y;y++){
+                        pointmap[indice].position = sf::Vector2f(i*3+x, j*3+y);
+                        pointmap[indice].color = sf::Color(r, g, b);
+                        indice++;
+                    }
+                } 
+            }
+        }
+    }
+    window.clear(sf::Color(255, 255, 255));
+    window.draw(pointmap);
+    window.display();
+}
+
+
 bool Jeu::Test() {
     pair<vector<int>,vector<int>>IDS = GetIdRenLap();
     for(int i : IDS.first){
