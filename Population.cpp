@@ -59,3 +59,7 @@ Animal Population::getAnimal(int id) const {
         throw invalid_argument("Indiced invalide");
     return pop[id];
 }
+
+int Population::NombreTotalAnimaux() const {
+    return TAILLE*TAILLE - CaseV.size();
+}
