@@ -101,8 +101,14 @@ struct Jeu{
      */
     void supprime(int id , Coord a);
     
-    
-    bool TypeOpposeProche(Coord); 
+    /**
+     * @brief verifie si la case choisi contient une des voisin de la meme espece mais d'un genre different
+     * 
+     * @param ind les coordonne de la case
+     * @return true ont y trouve un voisin de la meme espece mais d'un genre different
+     * @return false sinon
+     */
+    bool TypeOpposeProche(Coord ind); 
     
     bool Test();
 private:
