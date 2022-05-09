@@ -84,6 +84,13 @@ struct Population {
      * @return vector<int> qui contient toutes les ids de tous les lapins
      */
     vector<int> getIdsLap() const;
+    
+    /**
+     * @brief compte le nombre d'animaux vivant dans la population
+     * 
+     * @return le nombre total d'animaux dans la population
+     */
+    int NombreTotalAnimaux() const;
 private:
     
     // attributs
