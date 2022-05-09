@@ -16,7 +16,7 @@ Test : Population.o Jeux.o Coord.o Animal.o Ensemble.o Grille.o Test.o
 	$(CXX) -o $@ $^ $(LDFLAGS)
 	./Test
 bin/sfml-main : Population.o Jeux.o Coord.o Animal.o Ensemble.o Grille.o sfml-main.o
-	g++ SDL.cpp -o bin/SDL -I include -Llib -lsfml-window -lsfml-graphics -lsfml-system
+	$(CXX) -o $@ $^ $(LDFLAGS)
 	
 
 
